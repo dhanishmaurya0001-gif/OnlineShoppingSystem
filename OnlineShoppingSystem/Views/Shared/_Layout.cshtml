@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+@inject IConfiguration Config
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -6,17 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OnlineShoppingSystem</title>
 
-    ```
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/OnlineShoppingSystem.styles.css" asp-append-version="true" />
-    ```
 
 </head>
 
 <body>
 
-    ```
     <header>
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
@@ -104,6 +102,10 @@
     <div class="container mt-4">
 
         <main role="main" class="pb-3">
+            @if (Config.GetValue<bool>("DEMO_MODE"))
+            {
+                <div class="alert alert-info">Public portfolio demo. Products are fictional, changes are shared and reset when the service restarts. Checkout is a preview; no payment or order is submitted.</div>
+            }
 
             @RenderBody()
 
@@ -127,7 +129,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
-    ```
 
 </body>
 </html>

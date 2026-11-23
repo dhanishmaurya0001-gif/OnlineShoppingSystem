@@ -1,4 +1,4 @@
-﻿@model IEnumerable<OnlineShoppingSystem.Models.Product>
+@model IEnumerable<OnlineShoppingSystem.Models.Product>
 
 
 <h2>Products</h2>
@@ -23,7 +23,7 @@
             <div class="card mb-3">
 
                 <img src="@item.ImageUrl"
-                     class="card-img-top">
+                     class="card-img-top" alt="@item.Name" style="height:180px;object-fit:contain">
 
                 <div class="card-body">
 
@@ -37,12 +37,10 @@
                        class="btn btn-primary">
                         Details
                     </a>
-                    <a asp-controller="Cart"
-                       asp-action="AddToCart"
-                       asp-route-id="@item.Id"
-                       class="btn btn-success">
-                        Add To Cart
-                    </a>
+                    <form asp-controller="Cart" asp-action="AddToCart" method="post" class="d-inline">
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button class="btn btn-success" type="submit">Add To Cart</button>
+                    </form>
 
                 </div>
 

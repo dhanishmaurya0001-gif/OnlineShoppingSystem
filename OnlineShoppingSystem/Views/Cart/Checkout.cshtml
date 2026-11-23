@@ -1,5 +1,11 @@
-﻿<h2>Order Placed Successfully</h2>
-
-<h3>
-    Thank You For Shopping
-</h3>
+@model List<OnlineShoppingSystem.Models.CartItem>
+@{ ViewData["Title"] = "Checkout Preview"; }
+<h2>Checkout preview</h2>
+<p>This educational application does not submit orders or take payments.</p>
+@if (Model.Count == 0) {
+    <p>Your cart is empty.</p>
+} else {
+    <p>@Model.Sum(x => x.Quantity) item(s). Total: ₹@Model.Sum(x => x.Price * x.Quantity).ToString("N2")</p>
+    <p>Review quantities in your cart before continuing the demonstration.</p>
+}
+<a asp-action="Index" class="btn btn-primary">Back to cart</a>

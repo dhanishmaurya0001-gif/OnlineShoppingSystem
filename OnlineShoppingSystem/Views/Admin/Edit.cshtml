@@ -1,8 +1,9 @@
-﻿@model OnlineShoppingSystem.Models.Product
+@model OnlineShoppingSystem.Models.Product
 
 <h2>Edit Product</h2>
 
-<form asp-action="Edit">
+<form asp-action="Edit" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <input type="hidden" asp-for="Id" />
 

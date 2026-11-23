@@ -1,8 +1,9 @@
-﻿@model OnlineShoppingSystem.Models.Product
+@model OnlineShoppingSystem.Models.Product
 
 <h2>Add Product</h2>
 
-<form asp-action="Create">
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <input asp-for="Name"
            class="form-control mb-2"

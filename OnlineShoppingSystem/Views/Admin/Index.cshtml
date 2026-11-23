@@ -1,45 +1,12 @@
-﻿@model IEnumerable<OnlineShoppingSystem.Models.Product>
-
+@model IEnumerable<OnlineShoppingSystem.Models.Product>
+@{ ViewData["Title"] = "Manage Products"; }
 <h2>Product List</h2>
-<th>Action</th>
-
-<a asp-action="Create" class="btn btn-primary mb-3">
-    Add Product
-</a>
-
-<table class="table table-bordered">
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Image</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <td>
-
-            <a asp-action="Edit"
-               asp-route-id="@item.Id"
-               class="btn btn-warning">
-                Edit
-            </a>
-
-            <a asp-action="Delete"
-               asp-route-id="@item.Id"
-               class="btn btn-danger">
-                Delete
-            </a>
-
-        </td>
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Description</td>
-            <td>₹@item.Price</td>
-            <td>
-                <img src="@item.ImageUrl"
-                     width="100" />
-            </td>
-        </tr>
-    }
-</table>
+<a asp-action="Create" class="btn btn-primary mb-3">Add Product</a>
+<table class="table table-bordered"><thead><tr><th>Name</th><th>Description</th><th>Price</th><th>Image</th><th>Action</th></tr></thead><tbody>
+@foreach (var item in Model) {
+<tr><td>@item.Name</td><td>@item.Description</td><td>₹@item.Price.ToString("N2")</td><td><img src="@item.ImageUrl" alt="@item.Name" width="100" /></td><td>
+<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+<form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline"><button class="btn btn-danger">Delete</button></form>
+</td></tr>
+}
+</tbody></table>

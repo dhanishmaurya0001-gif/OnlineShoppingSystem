@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: dhanish-shopping-demo
+    runtime: docker
+    plan: free
+    region: singapore
+    branch: master
+    healthCheckPath: /health
+    envVars:
+      - key: DEMO_MODE
+        value: "true"

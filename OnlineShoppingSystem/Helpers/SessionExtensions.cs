@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 
 namespace OnlineShoppingSystem.Helpers
 {
@@ -14,7 +14,7 @@ namespace OnlineShoppingSystem.Helpers
                 JsonSerializer.Serialize(value));
         }
 
-        public static T GetObjectFromJson<T>(
+        public static T? GetObjectFromJson<T>(
             this ISession session,
             string key)
         {

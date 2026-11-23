@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using OnlineShoppingSystem.Models;
 
 namespace OnlineShoppingSystem.Controllers
@@ -22,9 +22,10 @@ namespace OnlineShoppingSystem.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Create(Product product)
         {
+            if (!ModelState.IsValid) return View(product);
             _context.Products.Add(product);
             _context.SaveChanges();
 
@@ -40,14 +41,17 @@ namespace OnlineShoppingSystem.Controllers
             return View(product);
         }
 
-        [HttpPost]
+        [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Edit(Product product)
         {
+            if (!ModelState.IsValid) return View(product);
+            if (!_context.Products.Any(x => x.Id == product.Id)) return NotFound();
             _context.Products.Update(product);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
+        [HttpPost, ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
         {
             var product = _context.Products.Find(id);
