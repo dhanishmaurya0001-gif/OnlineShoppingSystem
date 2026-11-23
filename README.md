@@ -1,5 +1,7 @@
 # Online Shopping System
 
+**[Open live demo](https://dhanish-shopping-demo.onrender.com/)** · **[Verified workflows and demo limits](LIVE-DEMO.md)**
+
 A runnable educational e-commerce application built with **ASP.NET Core 8 MVC, C#, Entity Framework Core, Bootstrap and session-based shopping carts**.
 
 The normal local configuration uses **SQL Server**. The optional public-demo configuration uses a separate **SQLite** database with six fictional catalogue products, so the app can run on a free Linux Docker host without a paid SQL Server service.
@@ -38,7 +40,7 @@ If deploying through the Render dashboard, choose this repository's **master** b
 
 ## Verified behavior
 
-Local Release build succeeded. HTTP checks exercised catalogue seeding/search, session cart add/update/remove, the honest checkout preview, and product create/edit/delete with antiforgery validation. Temporary test records were removed. A cloud deployment must also be checked at its actual URL before being described as live.
+Local Release build succeeded. HTTP checks exercised catalogue seeding/search, session cart add/update/remove, the honest checkout preview, and product create/edit/delete with antiforgery validation. Temporary test records were removed. The public Render HTTPS deployment also passed 18 focused workflow checks; see [live verification](LIVE-DEMO.md).
 
 ## Source layout
 
